@@ -30,6 +30,10 @@ if (widthLarger == true) imageWidthRatio = largerDimention / largerDimention;
 if (widthLarger == true) imageHeightRatio = smallerDimention / largerDimention;
 if (heightLarger == true) imageWidthRatio = smallerDimention / largerDimention;
 if (heightLarger == true) imageHeightRatio = largerDimention / largerDimention;
+//
+picWidthAdujusted = picWidth * imageWidthRatio;
+picHeightAdjusted = picHeight * imageWidthRatio;
+//
 //population
 pic = loadImage("../images/obunga (1).gif");
 imageBackgroundX = appWidth * 0;

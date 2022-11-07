@@ -1,5 +1,7 @@
 // Global Variables
 int appWidth, appHeight;
+float smallerDimention, largerDimention;
+Boolean heightLarger=false, widthLarger=;
 float imageBackgroundX, imageBackgroundY, imageBackgroundWidth, imageBackgroundHeight;
 PImage pic;
 Boolean nightMode=false;
@@ -10,8 +12,24 @@ appWidth = width;
 appHeight = height;
 //
 //Aspect Ratio calculations
-
+int picWidth = 640;
+int picHeight = 640;
 //
+//image orientation
+if( picWidth >= picHeight ) {//True if Landscape or square
+  largerDimention = picWidth;
+  smallerDimention = picHeight;
+  widthLarger = true;
+} else {//False if portrait
+  largerDimention = picHeight;
+  smallerDimention = picWidth;
+  heightLarger = true;
+};
+//
+if (widthLarger == true) imageWidthRatio = largerDimention / largerDimention;
+if (widthLarger == true) imageHeightRatio = smallerDimention / largerDimention;
+if (heightLarger == true) imageWidthRatio = smallerDimention / largerDimention;
+if (heightLarger == true) imageHeightRatio = largerDimention / largerDimention;
 //population
 pic = loadImage("../images/obunga (1).gif");
 imageBackgroundX = appWidth * 0;

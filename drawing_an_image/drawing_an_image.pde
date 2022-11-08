@@ -1,7 +1,8 @@
 // Global Variables
 int appWidth, appHeight;
 float smallerDimention, largerDimention;
-Boolean heightLarger=false, widthLarger=;
+float imageWidthRatio=0.0, imageHeightRatio=0.0;
+Boolean heightLarger=false, widthLarger= false;
 float imageBackgroundX, imageBackgroundY, imageBackgroundWidth, imageBackgroundHeight;
 PImage pic;
 Boolean nightMode=false;
@@ -33,8 +34,27 @@ if (widthLarger == true) imageHeightRatio = smallerDimention / largerDimention;
 if (heightLarger == true) imageWidthRatio = smallerDimention / largerDimention;
 if (heightLarger == true) imageHeightRatio = largerDimention / largerDimention;
 //
+float picWidthAdujusted, picHeightAdjusted;
+//better strech algorithm
+if (appWidth >= picWidth) {
+  picWidthAdujusted = picWidth;
+} else{
+if (widthLarger == true) imageWidthRatio = largerDimention / largerDimention;
+if (heightLarger == true) imageWidthRatio = smallerDimention / largerDimention;
+}
+if (appHeight >= picHeight) {
+  picHeightAdjusted = picHeight;
+} else{
+if (widthLarger == true) imageHeightRatio = smallerDimention / largerDimention;
+if (heightLarger == true) imageHeightRatio = largerDimention / largerDimention;
+}
+//
 picWidthAdujusted = picWidth * imageWidthRatio;
 picHeightAdjusted = picHeight * imageWidthRatio;
+//
+//developer verfied variables
+println(appWidth, picWidth, picWidthAdujusted);
+println(appHeight, picHeight, picHeightAdjusted);
 //
 //population
 pic = loadImage("../images/obunga (1).gif");
@@ -43,6 +63,7 @@ imageBackgroundY = appHeight * 0;
 imageBackgroundWidth = appWidth-1;
 imageBackgroundHeight = appHeight-1;
 // rectangle layout and image drawing to canvas
+rect(imageBackgroundX, imageBackgroundY, imageBackgroundWidth, imageBackgroundHeight);
 rect(imageBackgroundX, imageBackgroundY, imageBackgroundWidth, imageBackgroundHeight);
 //
 if (nightMode == false) tint(255, 128);

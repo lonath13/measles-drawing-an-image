@@ -1,56 +1,64 @@
 // Global Variables
 int appWidth, appHeight;
-float smallerDimention, largerDimention;
 float imageWidthRatio=0.0, imageHeightRatio=0.0;
 Boolean heightLarger=false, widthLarger= false;
 float imageBackgroundX, imageBackgroundY, imageBackgroundWidth, imageBackgroundHeight;
 PImage pic;
 Boolean nightMode=false;
 //
-size(800, 600);// landscape
-//copy display orientation from android
-appWidth = width;
-appHeight = height;
+void setup()
+{
+  size(1000, 800); //Landscape
+  //Copy Display Algorithm from Hello World
+  appWidth = width;
+  appHeight = height;
+  //
+  //Image Dimensions for Aspect Ratio
+  //Obi-wan-star-wars-jedi-23864621-800-600.jpg
+  //Note: Dimensions are found in the image file / Right Click / Properties / Details
+  int picWidth = 800;
+  int picHeight = 600;
+  //
+  float smallerDimension, largerDimension;
+  //Image Orientation: Landscape, Portrait, Square
+  if ( picWidth >= picHeight ) { //True if Landscape or Square
+    largerDimension = picWidth;
+    smallerDimension = picHeight;
+    widthLarger = true;
+  } else { //False if Portrait
+    largerDimension = picHeight;
+    smallerDimension = picWidth;
+    heightLarger = true;
+  }
+  //
+  float picWidthAdjusted=0.0, picHeightAdjusted=0.0;
+  //Teaching example, width is known to be larger
+  //Better Image Stretch Algorithm, smaller image to larger CANVAS
+  if ( appWidth >= picWidth ) {
+    picWidthAdjusted = appWidth;
+    //
+    if ( widthLarger == true ) imageWidthRatio = largerDimension / largerDimension;
+    if ( heightLarger == true ) imageWidthRatio = smallerDimension / largerDimension;
+    //
+    if ( appHeight >= picHeightAdjusted ) {
+      picHeightAdjusted = picHeight;
+      if ( widthLarger == true ) imageHeightRatio = smallerDimension / largerDimension;
+      if ( heightLarger == true ) imageHeightRatio = largerDimension / largerDimension;
+    } else {
+      //Image smaller than CANVAS needs separate algorithm
+    }
+  } else {
+    //Image smaller than CANVAS needs separate algorithm
+  }
+  //
+}//End setup
 //
-//Aspect Ratio calculations
-//note: dimentions are found in image
-//    file/ right click/ properties/ details
-int picWidth = 640;
-int picHeight = 640;
-//
-//image orientation
-if ( picWidth >= picHeight ) {//True if Landscape or square
-  largerDimention = picWidth;
-  smallerDimention = picHeight;
-  widthLarger = true;
-} else {//False if portrait
-  largerDimention = picHeight;
-  smallerDimention = picWidth;
-  heightLarger = true;
-};
-//
-if (widthLarger == true) imageWidthRatio = largerDimention / largerDimention;
-if (widthLarger == true) imageHeightRatio = smallerDimention / largerDimention;
-if (heightLarger == true) imageWidthRatio = smallerDimention / largerDimention;
-if (heightLarger == true) imageHeightRatio = largerDimention / largerDimention;
-//
-float picWidthAdujusted, picHeightAdjusted;
-//better strech algorithm
-if (appWidth >= picWidth) {
-  picWidthAdujusted = picWidth;
-} else{
-if (widthLarger == true) imageWidthRatio = largerDimention / largerDimention;
-if (heightLarger == true) imageWidthRatio = smallerDimention / largerDimention;
-}
-if (appHeight >= picHeight) {
-  picHeightAdjusted = picHeight;
-} else{
-if (widthLarger == true) imageHeightRatio = smallerDimention / largerDimention;
-if (heightLarger == true) imageHeightRatio = largerDimention / largerDimention;
-}
-//
-picWidthAdujusted = picWidth * imageWidthRatio;
-picHeightAdjusted = picHeight * imageWidthRatio;
+void draw() {
+}//End draw
+void keyPressed() {
+}//End keyPressed
+void mousePressed() {
+}//End mousePressed
 //
 //developer verfied variables
 println(appWidth, picWidth, picWidthAdujusted);

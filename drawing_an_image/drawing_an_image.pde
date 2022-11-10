@@ -1,11 +1,12 @@
 // Global Variables
 int appWidth, appHeight;
 Boolean widthLarger=false, heightLarger=false;
+Boolean widthLarger;
 float picWidthAdjusted=0.0, picHeightAdjusted=0.0;
 float backgroundImageX, backgroundImageY, backgroundImageWidth, backgroundImageHeight;
 float topHalfX, topHalfY, topHalfWidth, topHalfHeight;
 float bottomHalfX, bottomHalfY, bottomHalfWidth, bottomHalfHeight;
-PImage pic;
+PImage pic, pic2, pic3;
 Boolean nightMode=false;
 int tintDayMode=255, tintDayModeOpacity=50;
 int tintRed=64, tintGreen=64, tintBlue=40, tintNightModeOpacity=85;
@@ -80,9 +81,9 @@ void setup()
   bottomHalfHeight =appHeight * 4/20 ;
   //
   //Rectangular Layout and Image Drawing to CANVAS
-      rect( backgroundImageX, backgroundImageY, backgroundImageWidth, backgroundImageHeight );
-      rect(topHalfX, topHalfY, topHalfWidth, topHalfHeight);//top half
-      rect(bottomHalfX, bottomHalfY, bottomHalfWidth, bottomHalfHeight); // bottom half 
+  rect( backgroundImageX, backgroundImageY, backgroundImageWidth, backgroundImageHeight );
+  rect(topHalfX, topHalfY, topHalfWidth, topHalfHeight);//top half
+  rect(bottomHalfX, bottomHalfY, bottomHalfWidth, bottomHalfHeight); // bottom half 
   //
   //Background Image must be single executed code
   if (nightMode == false) tint(255, 50); //Gray Scale: use 1/2 tint value for white (i.e. 128/256=1/2)
@@ -93,9 +94,9 @@ void setup()
 //
 void draw()
 {
-  if (nightMode == true) {
-    //RGB tint() works in draw()
-  }
+  image(, topHalfX, topHalfY, topHalfWidth, topHalfHeight);
+  image(, bottomHalfX, bottomHalfY, bottomHalfWidth, bottomHalfHeight);
+}
 }//End draw
 //
 void keyPressed() {

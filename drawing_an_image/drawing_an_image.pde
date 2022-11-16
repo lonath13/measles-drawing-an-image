@@ -1,7 +1,7 @@
 // Global Variables
 int appWidth, appHeight;
 Boolean widthLarger=false, heightLarger=false;
-Boolean widthLarger;
+Boolean widthLarger2=false, heightLarger2=false;
 float picWidthAdjusted=0.0, picHeightAdjusted=0.0;
 float backgroundImageX, backgroundImageY, backgroundImageWidth, backgroundImageHeight;
 float topHalfX, topHalfY, topHalfWidth, topHalfHeight;
@@ -10,7 +10,6 @@ PImage pic, pic2, pic3;
 Boolean nightMode=false;
 int tintDayMode=255, tintDayModeOpacity=50;
 int tintRed=64, tintGreen=64, tintBlue=40, tintNightModeOpacity=85;
-
 //
 void setup()
 {
@@ -23,8 +22,12 @@ void setup()
   //Note: Dimensions are found in the image file / Right Click / Properties / Details
   int picWidth = 800;
   int picHeight = 600;
+  int pic2Width = 860; //landscape
+  int pic2Height = 529; //landscape
+  //int pic3Width = ; //portrait
+  //int pic3Height = ; //portrait
   //
-  float smallerDimension, largerDimension;
+  float smallerDimension, largerDimension, smallerDimension2, largerDimension2;
   //Image Orientation: Landscape, Portrait, Square
   if ( picWidth >= picHeight ) { //True if Landscape or Square
     largerDimension = picWidth;
@@ -34,6 +37,16 @@ void setup()
     largerDimension = picHeight;
     smallerDimension = picWidth;
     heightLarger = true;
+  }
+  if ( pic2Width >= pic2Height ) { //True if Landscape or Square
+    largerDimension2 = pic2Width;
+    smallerDimension2 = pic2Height;
+    widthLarger2 = true;
+    //Landscape large Image to larger space OR smaller space
+  } else { //False if Portrait
+    largerDimension2 = pic2Height;
+    smallerDimension2 = pic2Width;
+    heightLarger2 = true;
   }
   //
   //Teaching example, width is known to be larger
@@ -67,6 +80,8 @@ void setup()
   //
   //Population
   pic = loadImage("../images/obunga.gif");
+  pic2 = loadImage("../images/maxresdefault.jpg");
+  pic3 = loadImage("../images/bike.png");
   backgroundImageX = appWidth*0;
   backgroundImageY = appHeight*0;
   backgroundImageWidth = appWidth-1;
@@ -86,7 +101,8 @@ void setup()
   rect(bottomHalfX, bottomHalfY, bottomHalfWidth, bottomHalfHeight); // bottom half 
   //
   //Background Image must be single executed code
-  if (nightMode == false) tint(255, 50); //Gray Scale: use 1/2 tint value for white (i.e. 128/256=1/2)
+  if ( nightMode == false ) tint(tintDayMode, tintDayModeOpacity); //Gray Scale: use 1/2 tint value for white (i.e. 128/256=1/2)
+  if ( nightMode == true ) tint(tintRed, tintGreen, tintBlue, tintNightModeOpacity); //RGB: Night Mode
   //image( pic, backgroundImageX, backgroundImageY, backgroundImageWidth, backgroundImageHeight);
   image( pic, backgroundImageX, backgroundImageY, picWidthAdjusted, picHeightAdjusted);
   //
@@ -94,9 +110,9 @@ void setup()
 //
 void draw()
 {
-  image(, topHalfX, topHalfY, topHalfWidth, topHalfHeight);
-  image(, bottomHalfX, bottomHalfY, bottomHalfWidth, bottomHalfHeight);
-}
+  image(pic2, topHalfX, topHalfY, topHalfWidth, topHalfHeight);
+  image(pic3, bottomHalfX, bottomHalfY, bottomHalfWidth, bottomHalfHeight);
+
 }//End draw
 //
 void keyPressed() {

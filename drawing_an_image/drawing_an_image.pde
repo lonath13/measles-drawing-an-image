@@ -18,16 +18,34 @@ void setup()
 {
   size(1000, 800); //Landscape
   //Copy Display Algorithm from Hello World
+  //fullscreen(); //displayWidth, displayHeight
   appWidth = width;
   appHeight = height;
   //
+  //Population
+  pic = loadImage("../images/shove.gif");
+  pic2 = loadImage("../images/obunga.jpg");
+  pic3 = loadImage("../images/bike.png");
+  backgroundImageX = appWidth*0;
+  backgroundImageY = appHeight*0;
+  backgroundImageWidth = appWidth-1;
+  backgroundImageHeight = appHeight-1;
+  topHalfX =appWidth * 1/4;
+  topHalfY =appHeight * 1/20 ;
+  topHalfWidth =appWidth * 1/2;
+  topHalfHeight =appHeight * 8/20 ;
+  bottomHalfX =appWidth * 1/2 ;
+  bottomHalfY =appHeight * 3/4 ;
+  bottomHalfWidth =appWidth * 1/4 ;
+  bottomHalfHeight =appHeight * 4/20 ;
+  //
   //Image Dimensions for Aspect Ratio
   //Note: Dimensions are found in the image file / Right Click / Properties / Details
-  int picWidth = 800;
+  int picWidth = 800; // shove landscape
   int picHeight = 600;
-  int pic2Width = 860; //landscape
+  int pic2Width = 860; //bike landscape
   int pic2Height = 529; //landscape
-  int pic3Width = 1280; //portrait
+  int pic3Width = 1280; //obunga portrait
   int pic3Height = 720; //portrait
   //
   float smallerDimension, largerDimension, smallerDimension2, largerDimension2;
@@ -105,23 +123,6 @@ void setup()
   println("Larger Image dimension is:", largerDimension);
   println("Image dimensions are:", picWidth, picHeight);
   println("Adjusted Image dimesnions are (stretch is goal):", picWidthAdjusted, picHeightAdjusted);
-  //
-  //Population
-  pic = loadImage("../images/shove.gif");
-  pic2 = loadImage("../images/obunga.jpg");
-  pic3 = loadImage("../images/bike.png");
-  backgroundImageX = appWidth*0;
-  backgroundImageY = appHeight*0;
-  backgroundImageWidth = appWidth-1;
-  backgroundImageHeight = appHeight-1;
-  topHalfX =appWidth * 1/4;
-  topHalfY =appHeight * 1/20 ;
-  topHalfWidth =appWidth * 1/2;
-  topHalfHeight =appHeight * 8/20 ;
-  bottomHalfX =appWidth * 1/2 ;
-  bottomHalfY =appHeight * 3/4 ;
-  bottomHalfWidth =appWidth * 1/4 ;
-  bottomHalfHeight =appHeight * 4/20 ;
   //
   //Rectangular Layout and Image Drawing to CANVAS
   rect( backgroundImageX, backgroundImageY, backgroundImageWidth, backgroundImageHeight );

@@ -40,6 +40,7 @@ void setup()
   bottomHalfHeight =appHeight * 4/20 ;
   //
   //Image Dimensions for Aspect Ratio
+  //Note: meta explored in MP3's or music file
   //Note: Dimensions are found in the image file / Right Click / Properties / Details
   int picWidth = 800; // shove landscape
   int picHeight = 600;
@@ -48,16 +49,17 @@ void setup()
   int pic3Width = 1280; //obunga portrait
   int pic3Height = 720; //portrait
   //
-  float smallerDimension, largerDimension, smallerDimension2, largerDimension2;
   //Image Orientation: Landscape, Portrait, Square
+  //scaling image size with aspect ratio requires larger dimention
+  float smallerDimension, smallerDimension2, smallerDimension3;
+  float largerDimension, largerDimension2, largerDimension3;
   if ( picWidth >= picHeight ) { //True if Landscape or Square
     largerDimension = picWidth;
     smallerDimension = picHeight;
-    widthLarger = true;
+    //
   } else { //False if Portrait
     largerDimension = picHeight;
     smallerDimension = picWidth;
-    heightLarger = true;
   }
   if ( pic2Width >= pic2Height ) { //True if Landscape or Square
     largerDimension2 = pic2Width;
@@ -108,7 +110,7 @@ void setup()
   //bike Image: landscape into landscape
   if (widthLarger2 == false) {// landscape or square true
     picWidthAdjusted2= topHalfWidth;
-     if ( widthLarger == true ) imageWidthRatio2 = largerDimension / largerDimension;
+    if ( widthLarger == true ) imageWidthRatio2 = largerDimension / largerDimension;
     picHeightAdjusted2 = picWidthAdjusted2 * imageHeightRatio2;
   } else {
   }
@@ -119,7 +121,7 @@ void setup()
   println("Image dimensions are:", pic2Width, pic2Height);
   println("Adjusted Image dimesnions are (stretch is goal):", picWidthAdjusted, picHeightAdjusted);
   //
-   println("App Width:", pic2Width, " and App Height:", appHeight);
+  println("App Width:", pic2Width, " and App Height:", appHeight);
   println("Larger Image dimension is:", largerDimension);
   println("Image dimensions are:", picWidth, picHeight);
   println("Adjusted Image dimesnions are (stretch is goal):", picWidthAdjusted, picHeightAdjusted);
